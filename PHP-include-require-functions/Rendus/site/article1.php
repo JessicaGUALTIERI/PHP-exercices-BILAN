@@ -7,6 +7,10 @@
      On ajoutera un lien de navigation sur chaque fichier pour passer d'une page à l'autre
  */
 ?>
+
+<?php 
+  include('header.php');
+?>
 <article>
   <header>
     <h1>TinyMCE 4.2.7 : petites corrections pour l'éditeur de texte WYSIWYG</h1>
@@ -26,7 +30,7 @@
         target="_blank">etc.</a></li>
   </ul>
   <p>
-    <img src="http://www.developpez.net/forums/images/smilies/fleche.gif" border="0" alt="" title=":fleche:"
+    <img src="http://www.developpez.net/forums/images/smilies/fleche.gif" alt="" title=":fleche:"
       class="inlineimg" />
     <a href="http://www.tinymce.com/download/download.php" target="_blank">Télécharger</a>.<br />
   </p>
@@ -34,3 +38,7 @@
     <small>Source : developpez.net</small>
   </p>
 </article>
+
+<?php 
+  include('footer.php');
+?>

@@ -8,4 +8,7 @@
         3. Remplacez maintenant votre fonction d'inclusion par sa version
         `_once`. Que se passe-t-il ?
 
+                -> Alors l'image ne s'affiche qu'une seule fois.
+
     */
+
