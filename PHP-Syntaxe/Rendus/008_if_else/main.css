@@ -1,0 +1,65 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Exo 2', sans-serif;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 2em;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1em;
+}
+
+.image-perso {
+    height: 200px;
+    margin: auto 2em;
+}
+
+img {
+    height: 100%;
+}
+
+.infos-perso {
+    padding: 2em;
+    background: #DED9CE;
+    border-radius: 16px;
+}
+
+ul {
+    margin: 0;
+}
+
+.infos-perso .bjr {
+    font-weight: bold;
+}
+
+.infos-perso .infos span {
+    font-weight: bold;
+}
+
+.sorts {
+    color: #6B0504;
+}
+
+.infos-perso .infos .hp {
+    color: #008000;
+}
+.infos-perso .infos .ap {
+    color: #175676;
+}
+.infos-perso .infos .rm {
+    color: #F46036;
+}
+.infos-persos .infos .mana {
+    color: #1B998B;
+}
+
+.alert {
+    text-align: center;
+    font-size: 20px;
+}
