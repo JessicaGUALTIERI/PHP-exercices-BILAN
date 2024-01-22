@@ -8,3 +8,12 @@
         qui pourraient être présentes à l'intérieur.
 
      */
+
+    function getRealString($string) {
+        $string = trim($string);
+        $string = strtolower($string);
+        $string = strip_tags($string);
+        echo $string;
+    }
+
+    getRealString('    <h1>   TEST 1, 2,       TeSt 3, 4     </h1>       ');

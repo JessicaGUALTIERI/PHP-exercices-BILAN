@@ -21,7 +21,10 @@
             - Les éléments de liste <li> contiendront un <a> dirigeant vers chacune des pages
      */
 
-?><!DOCTYPE html>
+     require_once 'functions.php';
+?>
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
@@ -30,9 +33,18 @@
     <link rel="stylesheet" href="">
 </head>
 <body>
-    <?php echo getListMenu([
+    <?php 
+    echo getListMenu([
         'Homepage',
         'Archives',
-    ]); ?>
+    ]);
+    
+    $tab = array(
+        'Google' => 'https://www.google.fr/',
+        'Facebook' => 'https://www.facebook.fr',
+        'Twitter' => 0);
+
+    getListMenuURL($tab);
+    ?>
 </body>
 </html>

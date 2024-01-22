@@ -15,3 +15,18 @@
      * 
      * Rappel : les chaines de caractères sont comme des tableaux, on a le droit d'écrire `echo $string[0];` pour afficher la première lettre de la chaine
      */
+
+       function isStringLowerCase($string) {
+              $result = 'true';
+              for ($i=0; $i < strlen($string); $i++) { 
+                     $value = ord($string[$i]);
+                     if ($value > 65 && $value < 90) {
+                            $result = 'false';
+                     }
+              }
+              echo $result;
+       }
+
+       isStringLowerCase('je suis une chaine en minuscules :) ');
+       echo '<br>';
+       isStringLowerCase('moi j\'aime ECRIRE EN GROS');

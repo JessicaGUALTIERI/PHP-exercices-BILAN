@@ -29,3 +29,53 @@
         éléments du tableau.
 
      */
+
+    function echoElementsInCustomTags($tab, $html = 'div', $wrapper = 0, $class = 0) {
+        foreach ($tab as $key) {
+            if (!empty($wrapper)) {
+                echo '<'.$wrapper.'><'.$html;
+                if (!empty($class)) {
+                    echo ' class="'.$class.'">'.$key.'</'.$html.'>';
+                } else {
+                    echo '>'.$key.'</'.$html.'>';
+                }
+                echo '</'.$wrapper.'>';
+            } else {
+                echo '<'.$html;
+                if (!empty($class)) {
+                    echo ' class="'.$class.'">'.$key.'</'.$html.'>';
+                } else {
+                    echo '>'.$key.'</'.$html.'>';
+                }
+            }
+        }
+    }
+    
+?>
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercice PHP</title>
+</head>
+<body>
+    <style>
+        .rouge {
+            color: red;
+        }
+    </style>
+
+    <?php
+        $elements = array('poissons', 'oiseaux', 'dinosaures');
+        echoElementsInCustomTags($elements);
+
+        echoElementsInCustomTags($elements, 'p');
+    
+        echoElementsInCustomTags($elements, 'p', 'h1');
+    
+        echoElementsInCustomTags($elements, 'li', 'ul', 'rouge');
+    ?>
+</body>
+</html>

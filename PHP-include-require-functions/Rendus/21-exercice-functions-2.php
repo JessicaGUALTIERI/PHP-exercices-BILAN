@@ -5,3 +5,10 @@
       
         Attention, on demande d'afficher, pas de retourner.
      */
+    date_default_timezone_set('Europe/Paris');
+    function displayDateAndGreetings() {
+        $date = date('d/m');
+        echo 'Bonjour ! Nous sommes le '.$date.'.';
+    }
+
+    displayDateAndGreetings();

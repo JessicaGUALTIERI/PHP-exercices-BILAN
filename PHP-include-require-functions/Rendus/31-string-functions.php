@@ -16,6 +16,59 @@
   7. Bonus : Créez pour finir le dernier submit affiche les deux premiers mots de la chaine entrée, séparés par un tiret ("-")
   S'il n'y a pas assez de mots, affichez le message "Entrez au moins deux mots"
  */
+
+
+function modif() {
+  if ($_POST) {
+    $string = $_POST['string'];
+    foreach ($_POST as $key => $value) {
+      if ($key == 'upper') {
+        $newString = strtoupper($string);
+      }
+      if ($key == 'lower') {
+        $newString = strtolower($string);
+      }
+      if ($key == 'ucwords') {
+        $newString = ucwords($string);
+      }
+      if ($key == 'ucfirst') {
+        $newString = ucfirst($string);
+      }
+      if ($key == 'truncate') {
+        $point = false;
+        for ($i=0; $i < strlen($string); $i++) { 
+          if ($string[$i] == '.') {
+            $point = true;
+          }
+        }
+        if ($point) {
+          $newString = explode('.',$string);
+          $newString = $newString[0];
+        } else {
+          die('Pas de "." dans la phrase entrée.');
+        }
+      }
+      if ($key == 'separate') {
+        $espace = false;
+        for ($i=0; $i < strlen($string); $i++) { 
+          if ($string[$i] == ' ') {
+            $espace = true;
+          }
+        }
+        if ($espace) {
+          $newString = explode(' ',$string);
+          $newString = $newString[0].'-'.$newString[1];
+        } else {
+          die('Entrez au moins deux mots');
+        }
+      }
+    }
+    echo '<pre>';
+    print_r($newString);
+    echo '</pre>';
+  }
+}
+  
 ?>
 <html lang="fr">
 
@@ -32,14 +85,20 @@
     <input type="submit" name="lower" value="Minuscules">
     <input type="submit" name="ucwords" value="Maj. pour les mots">
     <input type="submit" name="ucfirst" value="Maj. pour la phrase">
-    <input type="submit" name="normalize" value="Maj. pour la phrase, le reste en minuscules">
-    <input type="submit" name="truncate" value="Tronquer">
+    <input type="submit" name="truncate" value="Tronquer au point">
     <!-- bonus -->
     <input type="submit" name="separate" value="Deux premiers mots">
   </form>
 
   <h3>Résultat</h3>
-  <p><?php echo $newString; // Définissez $newString en haut de la page ?></p>
+  <p>
+    <?php if ($_POST) {
+            echo 'Chaîne entrée : "'.$_POST['string'].'"';
+          }
+          echo '<br>';
+          modif();
+    ?>
+  </p>
 </body>
 
 </html>
