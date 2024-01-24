@@ -47,13 +47,11 @@
 
 */
 
-// Set de la zone pour le temps (sinon on est à l'heure de Londres donc -1h) :
+// REGLAGES :
 date_default_timezone_set('Europe/Paris');
-
-// Début de session :
-
 session_start();
-// Si envoi de formulaire, on set et déclare nos variables :
+
+// DECLARATIONS DE VARIABLES :
 if ($_POST) {
     // Heure du début
     if (!isset($_SESSION['debut'])) {
@@ -61,14 +59,15 @@ if ($_POST) {
     }
     // Heure de fin :
     $_SESSION['fin'] = microtime(true);
+    // Conditions entre 1 et 100 :
     if ($_POST['nombreUtilisateur'] < 1 || $_POST['nombreUtilisateur'] > 100) {
-        echo 'ERREUR : Veuillez entrer un nombre entre 1 et 100.<br>';
+        echo '<p class="error"><U>ERREUR :</U><br>Veuillez entrer un nombre entre 1 et 100.<br></p>';
         $error = true;
     } else {
         $nombreUtilisateur = $_POST['nombreUtilisateur'];
         $error = false;
     }
-    
+    // On set les SESSION
     if (!isset($_SESSION['nombreATrouver'])) {
         $_SESSION['nombreATrouver'] = rand(1, 100);
     }
@@ -78,13 +77,18 @@ if ($_POST) {
     if (!isset($_SESSION['history']) && !$error) {
         $_SESSION['history'] = [];
     }
-
+    // On réattribue la SESSION à une variable pour la fonction :
     $nombreATrouver = $_SESSION['nombreATrouver'];
+    // Si aucune erreur, on démarre la fonction qu'on stocke dans une variable :
     if (!$error) {
         $resultat = testerNombre($nombreUtilisateur,$nombreATrouver);
     }
 }
 
+// DÉCLARATIONS DE FONCTIONS :
+    // FONCTION testerNombre()
+        // Fonction qui compare le nombre entré par l'utilisateur au nombre à deviner
+        // Renvoie 0 (correct), 1 (inférieur) ou -1 (supérieur)
 function testerNombre($nombreUtilisateur,$nombreATrouver) {
     global $error;
     if (!$error) {
@@ -97,10 +101,10 @@ function testerNombre($nombreUtilisateur,$nombreATrouver) {
         }
     }   
 }
-
-echo $_SESSION['nombreATrouver'];
-
-
+    // FONCTION resultatToString()
+        // Fonction qui fait appel à testerNombre() et transforme ce qu'elle retourne en chaîne de caractères
+        // Fonction qui fait aussi appel à showHistory() pour afficher l'historique des réponses
+        // Aucun retour mais affiche des chaînes de craactère
 function resultatToString() {
     global $resultat;
     global $nombreUtilisateur;
@@ -109,11 +113,11 @@ function resultatToString() {
     if (!$error) {
         if ($resultat == 0) {
             $duree = round($_SESSION['fin']-$_SESSION['debut']);
-            echo '<h1>VICTOIRE </h1><br>Le nombre recherché était bien "'.$_SESSION['nombreATrouver'].'" et a été trouvé au '.$_SESSION['nombreTentatives'];
+            echo '<h1>VICTOIRE </h1><br>Le nombre recherché était bien "<b class="b">'.$_SESSION['nombreATrouver'].'</b>" et a été trouvé au <b class="b">'.$_SESSION['nombreTentatives'];
             if ($_SESSION['nombreTentatives'] == 1) {
-                echo '<sup>er</sup>';
+                echo '<sup>er</b></sup>';
             } else {
-                echo '<sup>ème</sup>';
+                echo '<sup>ème</b></sup>';
             }
             echo ' coup !<br>(Durée de la partie : '.$duree.' secondes)';
             session_destroy();
@@ -128,9 +132,9 @@ function resultatToString() {
         }
     }
 }
-
-
-
+    // FONCTION showHistory()
+        // Fonction qui permet l'affichage de l'historique des nombres entrés par l'utilisateur
+        // Aucun retour mais affiche l'historique
 function showHistory() {
     foreach ($_SESSION['history'] as $key => $value) {
         $valueAffichee = implode(' ',$value);
@@ -138,6 +142,9 @@ function showHistory() {
     }
 } 
 
+    // FONCTION form()
+        // Fonction qui affiche le formulaire
+        // Aucun retour mais affiche le formulaire
 function form() {
     echo '<h1>LE JUSTE PRIX</h1>
     <form action="" method="post">

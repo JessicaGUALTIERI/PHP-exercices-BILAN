@@ -5,17 +5,21 @@
     font-size: 24px;
 }
 
-
 h1 {
     font-family: 'Libre Barcode 128 Text', system-ui;
-    font-size: 60px;
+    font-size: 70px;
 }
 
 .b {
-    color: blueviolet;
+    color: gray;
 }
 
 button {
-    background-color: gray;
-    color: white;
+    background-color: lightgray;
+    border: 0.1px solid gray;
+    margin-left: 10px;
+}
+
+.error {
+    color: darkmagenta;
 }

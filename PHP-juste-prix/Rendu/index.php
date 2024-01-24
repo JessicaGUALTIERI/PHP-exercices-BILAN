@@ -9,17 +9,16 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Libre+Barcode+128+Text&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Teko&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Sevillana&display=swap" rel="stylesheet">
 </head>
 <body> 
     <div class="container"> 
-        <div class="border">
         <?php
             require_once 'functions.php';
             form();
-            resultatToString();  
+            if ($_POST) {
+                resultatToString();  
+            }
         ?>
-        </div>
     </div>
 </body>
 </html>
